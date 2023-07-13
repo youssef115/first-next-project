@@ -1,12 +1,24 @@
 import React from 'react'
 import Image from 'next/image'
-function BlogPost() {
+import { getData } from '@/utils'
+
+type Params={
+  id:number;
+}
+type BlogType={
+  userId:number;
+  id:number;
+  title:string;
+  body:string;
+}
+async function BlogPost({params}:{params:Params}) {
+  const data:BlogType = await getData(params.id);
   return (
     <div className='container flex flex-col w-full  items-center'>
         <div className='flex justify-center'>
           <div className="w-[58%] flex gap-5 flex-col">
-              <h1 className="text-3xl font-bold">lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
-              <p>percent by teacher happened difficulty slope thee shelf extra bite is whose knowledge sentence president avoid planned yesterday dot human send red climate attack</p>
+              <h1 className="text-3xl font-bold">{data?.title}</h1>
+              <p>{data?.body}</p>
               <div className="flex gap-4">
               <Image 
               className="rounded-full"

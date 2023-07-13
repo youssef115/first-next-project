@@ -2,12 +2,14 @@
 import Link from 'next/link'
 import React from 'react'
 import { links } from '@/constants'
+import DarkModeToggle from '../DarkModeToggle/DarkModeToggle'
 
 function Navbar() {
   return (
     <nav className='flex justify-between mt-10'>
       <Link href="/" className="text-4xl font-bold"> Youssef </Link>
       <div className='flex gap-4 px-5 py-3'>
+        <DarkModeToggle/>
         {links.map((link)=>(
         <Link href={link.url} key={link.id}>{link.title}</Link> 
       ))}
